@@ -13,8 +13,8 @@
   <meta property="og:description" content="Un regalo del Día de la Madre, hecho con cariño por [TU NOMBRE].">
   <!-- CAMBIAR POR LA URL REAL -->
   <meta property="og:url" content="https://[TU-DOMINIO].com/">
-  <!-- CAMBIAR POR LA URL REAL: usar la URL pública de fotos/foto1.jpg -->
-  <meta property="og:image" content="https://[TU-DOMINIO].com/fotos/foto1.jpg">
+  <!-- CAMBIAR POR LA URL REAL: usar la URL pública de imagenes/foto1.jpg -->
+  <meta property="og:image" content="https://[TU-DOMINIO].com/imagenes/foto1.jpg">
   <link rel="preload" as="image" href="imagenes/mama-llora.png">
   <link rel="preload" as="image" href="imagenes/mama-abrazo.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -119,12 +119,14 @@
     .letter-heading { margin: 0 0 24px; color: var(--wine); font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.35rem, 9vw, 4.4rem); font-weight: 600; letter-spacing: -.04em; line-height: 1.08; text-align: center; }
     .letter-card p { margin: 0 0 20px; font-size: clamp(1rem, 2.2vw, 1.08rem); }
     .letter-card p:last-of-type { margin-bottom: 0; }
+    .letter-petals { display: block; width: 54px; height: 31px; margin: -5px auto 10px; overflow: visible; color: rgba(139,61,82,.48); pointer-events: none; }
+    .letter-petals path { fill: none; stroke: currentColor; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .photo-card { position: relative; z-index: 2; display: block; width: 58%; max-width: 220px; margin: 17px 0; padding: 7px 7px 12px; overflow: hidden; border: 1px solid rgba(139,61,82,.1); border-radius: 7px; background: linear-gradient(145deg, #ffdce3, #dcecf5 55%, #f5dce1); box-shadow: 0 12px 26px rgba(75,48,57,.2); }
+    .photo-card { position: relative; z-index: 2; display: block; width: 58%; max-width: 220px; margin: 17px 0; padding: 7px 7px 12px; overflow: visible; border: 1px solid rgba(139,61,82,.1); border-radius: 7px; background: linear-gradient(145deg, #ffdce3, #dcecf5 55%, #f5dce1); box-shadow: 0 12px 26px rgba(75,48,57,.2); }
     .photo-card.reveal { opacity: 0; transform: rotate(var(--tilt)) translateY(12px); transition: opacity .7s ease, transform .7s ease; }
     .photo-card.reveal.is-visible { opacity: 1; transform: rotate(var(--tilt)) translateY(0); }
-    .photo-card img { width: 100%; aspect-ratio: 4 / 4.8; border-radius: 3px; background: linear-gradient(145deg, #ffdce3, #dcecf5); object-fit: cover; cursor: zoom-in; animation: photo-drift 7s ease-in-out infinite alternate; }
+    .photo-card img { position: relative; z-index: 1; width: 100%; aspect-ratio: 4 / 4.8; border-radius: 3px; background: linear-gradient(145deg, #ffdce3, #dcecf5); object-fit: cover; cursor: zoom-in; animation: photo-drift 7s ease-in-out infinite alternate; }
     .photo-card img.is-missing { opacity: 0; }
     .photo-1, .photo-3, .photo-5, .photo-7 { margin-right: auto; margin-left: -9px; }
     .photo-2, .photo-4, .photo-6, .photo-8 { margin-right: -9px; margin-left: auto; }
@@ -136,6 +138,16 @@
     .photo-6 { --tilt: 4deg; }
     .photo-7 { --tilt: 2deg; }
     .photo-8 { --tilt: -6deg; }
+
+    /* Corazones ilustrados en los huecos junto a las fotos: todos sin relleno. */
+    .photo-heart-doodle { position: absolute; z-index: 3; top: 50%; display: block; width: clamp(52px, 17vw, 72px); height: auto; overflow: visible; pointer-events: none; opacity: .94; transform: translateY(-50%) rotate(7deg); }
+    .photo-heart-doodle path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .photo-heart-doodle .doodle-heart { stroke: #bd7d8e; stroke-width: 2.15; }
+    .photo-heart-doodle .doodle-echo { stroke: #dfb2bd; stroke-width: 1.2; opacity: .85; }
+    .photo-heart-doodle .doodle-vein { stroke: #9ab7c4; stroke-width: 1.45; opacity: .9; }
+    .photo-heart-doodle .doodle-spark { stroke: #c997a4; stroke-width: 1.5; }
+    .photo-1 .photo-heart-doodle, .photo-3 .photo-heart-doodle, .photo-5 .photo-heart-doodle, .photo-7 .photo-heart-doodle { left: calc(100% + 4px); }
+    .photo-2 .photo-heart-doodle, .photo-4 .photo-heart-doodle, .photo-6 .photo-heart-doodle, .photo-8 .photo-heart-doodle { right: calc(100% + 4px); transform: translateY(-50%) rotate(-7deg); }
     .closing { padding: 38px 0 18px; text-align: center; }
     .closing-heart { display: inline-block; color: var(--wine); font-size: 4.2rem; line-height: 1.1; animation: heartbeat 1.7s ease-in-out infinite; }
     .signature { margin: 8px 0 0; color: var(--wine); font-family: "Playfair Display", Georgia, serif; font-size: 1.7rem; }
@@ -172,6 +184,14 @@
       .photo-6 { right: -190px; bottom: 72px; }
       .photo-7 { bottom: -66px; left: -122px; }
       .photo-8 { right: -125px; bottom: -55px; }
+    }
+
+    @media (min-width: 1050px) {
+      .photo-heart-doodle { width: 48px; }
+    }
+    @media (min-width: 1200px) {
+      .photo-1 .photo-heart-doodle, .photo-3 .photo-heart-doodle, .photo-5 .photo-heart-doodle, .photo-7 .photo-heart-doodle { right: calc(100% + 8px); left: auto; transform: translateY(-50%) rotate(-7deg); }
+      .photo-2 .photo-heart-doodle, .photo-4 .photo-heart-doodle, .photo-6 .photo-heart-doodle, .photo-8 .photo-heart-doodle { right: auto; left: calc(100% + 8px); transform: translateY(-50%) rotate(7deg); }
     }
     @media (max-width: 380px) {
       .intro-screen { padding-right: 13px; padding-left: 13px; }
@@ -249,26 +269,41 @@
           <article class="letter-card" aria-label="Carta para mamá">
             <h1 class="letter-heading" id="letterTitle" tabindex="-1">¡Feliz Día, mamá!</h1>
             <p class="reveal">Sos mi todo. Me diste la vida, me enseñaste a caminar, hablar y pensar, me educaste y, a pesar de no tenerlo todo, nunca me hiciste faltar nada necesario.</p>
+            <svg class="letter-petals reveal" viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(2 9) scale(.62)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(21 1) scale(.72)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(40 9) scale(.62)" />
+            </svg>
             <!-- CAMBIAR FOTOS: reemplazá estos archivos por tus fotos. Para sumar otra, copiá una línea figure y cambiá el número y el alt. -->
-            <figure class="photo-card photo-1 reveal"><img src="fotos/foto1.jpg" alt="Foto 1 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
-            <figure class="photo-card photo-2 reveal"><img src="fotos/foto2.jpg" alt="Foto 2 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
+            <figure class="photo-card photo-1 reveal"><img src="imagenes/foto1.jpg" alt="Foto 1 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
+            <figure class="photo-card photo-2 reveal"><img src="imagenes/foto2.jpg" alt="Foto 2 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
             <p class="reveal">Te amo por la persona que sos, más allá de ser mi mamá. Sos mi ejemplo en todo: bondadosa, determinada y trabajadora.</p>
-            <figure class="photo-card photo-3 reveal"><img src="fotos/foto3.jpg" alt="Foto 3 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
-            <figure class="photo-card photo-4 reveal"><img src="fotos/foto4.jpg" alt="Foto 4 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
+            <svg class="letter-petals reveal" viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(2 9) scale(.62)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(21 1) scale(.72)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(40 9) scale(.62)" />
+            </svg>
+            <figure class="photo-card photo-3 reveal"><img src="imagenes/foto3.jpg" alt="Foto 3 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
+            <figure class="photo-card photo-4 reveal"><img src="imagenes/foto4.jpg" alt="Foto 4 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
             <p class="reveal">Ojalá algún día la gente que te conoce me diga: "Sos parecido a tu mamá", porque sería un orgullo para mí parecerme a vos, que pudiste y podés con todo y tenés el corazón más grande que conozco.</p>
-            <figure class="photo-card photo-5 reveal"><img src="fotos/foto5.jpg" alt="Foto 5 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
-            <figure class="photo-card photo-6 reveal"><img src="fotos/foto6.jpg" alt="Foto 6 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
+            <svg class="letter-petals reveal" viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(2 9) scale(.62)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(21 1) scale(.72)" />
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(40 9) scale(.62)" />
+            </svg>
+            <figure class="photo-card photo-5 reveal"><img src="imagenes/foto5.jpg" alt="Foto 5 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
+            <figure class="photo-card photo-6 reveal"><img src="imagenes/foto6.jpg" alt="Foto 6 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
             <p class="reveal">Gracias, mamá, por darme la vida y por ser la mejor de todas.</p>
-            <figure class="photo-card photo-7 reveal"><img src="fotos/foto7.jpg" alt="Foto 7 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
-            <figure class="photo-card photo-8 reveal"><img src="fotos/foto8.jpg" alt="Foto 8 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"></figure>
+            <figure class="photo-card photo-7 reveal"><img src="imagenes/foto7.jpg" alt="Foto 7 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
+            <figure class="photo-card photo-8 reveal"><img src="imagenes/foto8.jpg" alt="Foto 8 de [TU NOMBRE] con su mamá" loading="lazy" decoding="async"><svg class="photo-heart-doodle" viewBox="0 0 88 82" aria-hidden="true" focusable="false"><path class="doodle-heart" d="M44 70 C38 65 13 48 9 32 C5 17 17 9 29 12 C36 14 41 19 44 26 C48 17 57 10 68 12 C80 15 84 27 79 38 C74 53 55 66 44 70 Z"/><path class="doodle-echo" d="M43 67 C31 58 15 45 13 32 C11 23 16 17 24 16"/><path class="doodle-vein" d="M22 25 C28 19 35 22 39 29 M51 25 C57 19 64 20 68 26"/><path class="doodle-spark" d="M7 43l-4 1 M11 54l-3 3 M80 47l4 1 M76 58l3 3"/></svg></figure>
           </article>
         </div>
         <div class="closing reveal">
           <span class="closing-heart" aria-hidden="true">♥</span>
           <!-- CAMBIAR POR TU NOMBRE O CÓMO FIRMÁS. -->
-          <p class="signature">[TU NOMBRE O CÓMO FIRMÁS]</p>
+          <p class="signature">Tu hijo, Colo</p>
         </div>
-        <footer class="site-footer">Hecho con ♡ por [TU NOMBRE] · Eros Web</footer>
+        <footer class="site-footer">Eros Web</footer>
       </div>
     </section>
   </main>
@@ -708,4 +743,3 @@
   </script>
 </body>
 </html>
-
